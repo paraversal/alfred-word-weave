@@ -65,9 +65,9 @@ Tab keeps you on the same keyword, so a ping-pong started with `btg` stays on Go
 ## Development
 
 ```bash
-git clone https://github.com/paraversal/WordWeave.git
+git clone https://github.com/paraversal/alfred-word-weave.git
 # create symlink to the local repo in the Alfred workflow folder. Any changes in the local repo folder are mirrored to Alfred
-ln -s WordWeave/src ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.WordWeave
+ln -s alfred-word-weave/src ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.WordWeave
 ```
 
 ## Contributing

@@ -14,7 +14,7 @@ def download_with_progress(pkg, on_progress=None, chunk_size=1 << 16) -> Path:
     last_err = None
     for link in pkg.links:                     
         try:
-            req = urllib.request.Request(link, headers={"User-Agent": "WordWeave/0.1 (+https://github.com/paraversal/WordWeave)"})
+            req = urllib.request.Request(link, headers={"User-Agent": "WordWeave/0.1 (+https://github.com/paraversal/alfred-word-weave)"})
             with urllib.request.urlopen(req, timeout=30) as resp, open(tmp, "wb") as f:
                 total = int(resp.headers.get("Content-Length") or 0) or None
                 done = 0
