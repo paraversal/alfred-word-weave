@@ -90,7 +90,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>~/.local/bin/uv run main.py translate googletrans "$1"</string>
+				<string>source ./uv.sh &amp;&amp; "$uv_bin" run main.py translate googletrans "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -139,7 +139,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>~/.local/bin/uv run main.py translate "${ww_argos_engine:-argoslean}" "$1"</string>
+				<string>source ./uv.sh &amp;&amp; "$uv_bin" run main.py translate "${ww_argos_engine:-argoslean}" "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -168,7 +168,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>~/.local/bin/uv run main.py download "$from" "$to"</string>
+				<string>source ./uv.sh &amp;&amp; "$uv_bin" run main.py download "$from" "$to"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -230,7 +230,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>~/.local/bin/uv run main.py list-pairs "$1"</string>
+				<string>source ./uv.sh &amp;&amp; "$uv_bin" run main.py list-pairs "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -333,7 +333,7 @@ WordWeave has one keyword per translator, and both work exactly the same way:
 - `bt` translates with **Argos**, offline. Models run locally and your text never leaves your device.
 - `btg` translates with **Google Translate**, online. No downloads are needed, but it needs an internet connection and sends what you type to Google.
 
-Use one or both. To switch a keyword off, clear it in the workflow settings (for example, clear the Google keyword to keep WordWeave fully offline). Quick codes and flags are shared by both.
+Use one or both. Keywords are empty by default: open **Configure Workflow…** and enter the keywords you want to use; the fields suggest `bt`, `btg`, and `btd`. Leave a field empty to keep that keyword off (for example, leave the Google keyword empty to keep WordWeave fully offline). Quick codes and flags are shared by both.
 
 There's no default language pair, so every query names both languages. Pick one of two styles (you can't mix them within a query):
 
@@ -352,7 +352,7 @@ Results are ranked best first. Press **Tab** on one to swap the pair and carry t
 
 *Using only Google (`btg`)? You can skip this section.*
 
-Nothing is bundled. Use the download keyword (default `btd`) to browse available pairs, filtering by code or name: `btd en pt` or `btd english port`. Press ↩ on a pair to install it and watch the progress bar. Once a model is installed, it works fully offline.
+Nothing is bundled. Use the download keyword (suggested `btd`) to browse available pairs, filtering by code or name: `btd en pt` or `btd english port`. Press ↩ on a pair to install it and watch the progress bar. Once a model is installed, it works fully offline.
 
 Only one download runs at a time. If a download stalls, check `job.log` in the workflow's cache folder.
 
@@ -368,7 +368,7 @@ Only one download runs at a time. If a download stalls, check `job.log` in the w
 
 ## Settings
 
-**Keywords**: one for Argos, one for Google, and one for downloading Argos models. Empty the text field to disable any one.
+**Keywords**: one for Argos, one for Google, and one for downloading Argos models. They are empty by default; set the ones you want. Empty a text field to disable that keyword.
 
 **Argos engine**: *Lean* (default, fast) or *Stock* (the official Argos pipeline, much slower). Only affects the Argos keyword.
 
@@ -456,16 +456,16 @@ If a setting is malformed, WordWeave says so in the result list.</string>
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>bt</string>
-				<key>placeholder</key>
 				<string></string>
+				<key>placeholder</key>
+				<string>bt</string>
 				<key>required</key>
 				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Translates with Argos models on your Mac: works offline and your text never leaves your computer. Leave empty to turn this keyword off.</string>
+			<string>Suggested keyword: bt. Translates with Argos models on your Mac: works offline and your text never leaves your computer. Leave empty to turn this keyword off.</string>
 			<key>label</key>
 			<string>Keyword: Argos (offline)</string>
 			<key>type</key>
@@ -477,16 +477,16 @@ If a setting is malformed, WordWeave says so in the result list.</string>
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>btg</string>
-				<key>placeholder</key>
 				<string></string>
+				<key>placeholder</key>
+				<string>btg</string>
 				<key>required</key>
 				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Translates with Google Translate: needs no model downloads, but needs an internet connection and sends everything you type after this keyword to Google. Leave empty to turn this keyword off, e.g. to keep WordWeave fully offline.</string>
+			<string>Suggested keyword: btg. Translates with Google Translate: needs no model downloads, but needs an internet connection and sends everything you type after this keyword to Google. Leave empty to turn this keyword off, e.g. to keep WordWeave fully offline.</string>
 			<key>label</key>
 			<string>Keyword: Google (online)</string>
 			<key>type</key>
@@ -498,16 +498,16 @@ If a setting is malformed, WordWeave says so in the result list.</string>
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>btd</string>
-				<key>placeholder</key>
 				<string></string>
+				<key>placeholder</key>
+				<string>btd</string>
 				<key>required</key>
 				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Browse and install the Argos models that the Argos keyword needs. Not used by the Google keyword. Leave empty to turn this keyword off.</string>
+			<string>Suggested keyword: btd. Browse and install the Argos models that the Argos keyword needs. Not used by the Google keyword. Leave empty to turn this keyword off.</string>
 			<key>label</key>
 			<string>Keyword: download Argos models</string>
 			<key>type</key>

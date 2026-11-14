@@ -10,7 +10,7 @@ Fast translation in [Alfred](https://www.alfredapp.com/), offline with a lean im
 - **Every language pair is a first-class citizen**: no "default" pair or language must (or can!) be specified - polyglots welcome!
 - **Customizable QuickCode system**: define short handles for your most-used languages, or specify language pairs via their ISO 639-1 codes.
 - **Customizable emoji per language**: don't feel like the U.S. flag should represent the English language? Me neither! Specify exactly which flag should represent which language, or forgo national flags entirely. The world is your oyster! 🏳️‍🌈
-- **Two translators, two keywords**: `bt` translates with Argos, entirely offline once its models are downloaded, and your text never leaves your Mac. `btg` translates with Google Translate: no downloads, more languages, better on longer text, but it needs internet and sends your text to Google. Use one or both; clear a keyword in the workflow settings to switch it off (clear `btg` and WordWeave stays fully offline. Yay!)
+- **Two translators, two keywords**: set `bt` for Argos, entirely offline once its models are downloaded, and your text never leaves your Mac. Set `btg` for Google Translate: no downloads, more languages, better on longer text, but it needs internet and sends your text to Google. Keywords are empty by default; enter the ones you want in the workflow configuration. Use one or both; leave a keyword empty to switch it off (leave `btg` empty and WordWeave stays fully offline. Yay!)
 - **Private by default**: nothing is sent anywhere unless you type the Googly keyword 👀.
 - **Fast**: tuned for Alfred's run-on-every-keystroke model. Translations take on the order of 100 ms with Argos Lean (the default); Google depends on your connection.
 
@@ -23,13 +23,14 @@ Fast translation in [Alfred](https://www.alfredapp.com/), offline with a lean im
 
 1. Download the latest `.alfredworkflow` from the [Releases](../../releases) page.
 2. Double-click it to import into Alfred.
-3. On first run, the workflow installs its dependencies. For Google (`btg`), that's all you need. For Argos (`bt`), models are fetched from the upstream Argos package index on demand and are not bundled in this repository; see the documentation inside the workflow, or "Usage" below, to learn how to download them.
+3. The first time you use a keyword, the workflow installs its dependencies. For Google (`btg`), that's all you need. For Argos (`bt`), models are fetched from the upstream Argos package index on demand and are not bundled in this repository; see the documentation inside the workflow, or "Usage" below, to learn how to download them.
+4. Open the workflow configuration (Configure Workflow…) and enter the keywords you want: `bt` for Argos, `btg` for Google, `btd` for model downloads. Leave a field empty to disable that keyword.
 
 ## Usage
 
-WordWeave has one keyword per translator. Both work exactly the same way, and you can rename or switch off any of them in the workflow settings:
+WordWeave has one keyword per translator. Both work exactly the same way. Keywords are empty by default; set them in the workflow configuration (Configure Workflow…), and leave a field empty to switch that keyword off. The table shows the suggested values:
 
-| Default keyword | Translator | Needs internet | Needs model download |
+| Suggested keyword | Translator | Needs internet | Needs model download |
 | --- | --- | --- | --- |
 | `bt` | Argos | No (after downloading models) | Yes, per language pair |
 | `btg` | Google Translate | Yes | No |
