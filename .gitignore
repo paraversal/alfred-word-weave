@@ -112,3 +112,6 @@ dmypy.json
 argos-download
 argos-models
 prefs.plist
+docs/architecture.md
+docs/user-guide.md
+spec.md
